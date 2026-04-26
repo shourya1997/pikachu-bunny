@@ -1,0 +1,20 @@
+{
+  "designSystem": "AuditOS",
+  "source": "Hybrid of Stripe-inspired fintech precision, Linear-inspired workflow clarity, and Revolut-inspired consumer fintech energy from awesome-design-md",
+  "primaryLayout": "B - Financial Control Room",
+  "secondaryLayout": "D - Timeline Investigator",
+  "decision": "Dashboard first, month-wise audit second, action packet third",
+  "feedback": {
+    "B": {
+      "rating": 4,
+      "comment": "I like the dashboard with all info and findings"
+    },
+    "D": {
+      "rating": 3,
+      "comment": "I like the month-wise detailed view"
+    },
+    "F": {
+      "rating": 2
+    }
+  }
+}
