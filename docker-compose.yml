@@ -1,0 +1,11 @@
+services:
+  audit-app:
+    build: .
+    image: ghcr.io/shourya1997/pikachu-bunny:local
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ${HOME}/.audit-os/data:/app/data
+    environment:
+      AUDITOS_DATA_DIR: /app/data
+    restart: unless-stopped
