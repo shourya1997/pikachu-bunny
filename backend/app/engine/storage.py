@@ -122,6 +122,7 @@ def save_audit_summary(db_path: Path, summary: AuditSummary) -> None:
 
 
 def load_audit_summary(db_path: Path, audit_id: str) -> AuditSummary | None:
+    init_db(db_path)
     with sqlite3.connect(db_path) as connection:
         row = connection.execute("SELECT summary_json FROM audits WHERE id = ?", (audit_id,)).fetchone()
     if row is None:
