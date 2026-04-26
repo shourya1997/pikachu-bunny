@@ -12,6 +12,8 @@ PATTERNS = (
     (re.compile(r"(?i)(member:\s*)[A-Za-z][A-Za-z ]+?(?=\s+UAN:|$)"), r"\1[NAME]"),
     (re.compile(r"(?i)(employee\s+id:\s*)[A-Z0-9-]+"), r"\1[EMPLOYEE_ID]"),
     (re.compile(r"(?i)(address:\s*)[^;\n]+"), r"\1[ADDRESS]"),
+    (re.compile(r"\b\d{12}\b"), "[UAN]"),
+    (re.compile(r"\b[6-9]\d{9}\b"), "[PHONE]"),
 )
 
 

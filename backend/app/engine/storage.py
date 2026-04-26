@@ -131,6 +131,7 @@ def load_audit_summary(db_path: Path, audit_id: str) -> AuditSummary | None:
 
 
 def load_evidence_snippets(db_path: Path, audit_id: str) -> list[EvidenceSnippet]:
+    init_db(db_path)
     with sqlite3.connect(db_path) as connection:
         rows = connection.execute(
             """

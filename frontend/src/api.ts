@@ -1,4 +1,4 @@
-import type { AuditSummary, JobStatus } from './types';
+import type { AuditSummary, Finding, JobStatus } from './types';
 
 const auditStates = ['empty', 'processing', 'partial', 'clean', 'confirmed_mismatch', 'needs_review', 'unsupported', 'failed', 'cancelled'] as const;
 const jobStates = ['queued', 'running', 'cancelled', 'failed', 'completed'] as const;
@@ -9,14 +9,14 @@ function isOneOf<const T extends readonly string[]>(value: unknown, allowed: T):
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return Boolean(value) && typeof value === 'object';
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === 'string');
 }
 
-function isFinding(value: unknown): boolean {
+function isFinding(value: unknown): value is Finding {
   if (!isRecord(value)) {
     return false;
   }

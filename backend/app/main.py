@@ -17,6 +17,14 @@ STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
 DEFAULT_DATA_DIR = Path(os.environ.get("AUDITOS_DATA_DIR", "./data"))
 MAX_IMPORT_TEXT_CHARS = 1_048_576
 AUDIT_ID_PATTERN = r"^[A-Za-z0-9_-]{1,64}$"
+JOB_ID_PATTERN = r"^job-[a-f0-9]{32}$"
+
+
+def cors_origins() -> list[str]:
+    origins = [origin.strip() for origin in os.environ.get("AUDITOS_CORS_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173").split(",")]
+    if "*" in origins:
+        raise ValueError("AUDITOS_CORS_ORIGINS must not include '*'.")
+    return [origin for origin in origins if origin]
 
 
 def resolve_spa_path(static_root: Path, full_path: str) -> Path | None:
@@ -34,7 +42,7 @@ app.state.audit_service = AuditService(DEFAULT_DATA_DIR / "audit.db")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.environ.get("AUDITOS_CORS_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173").split(","),
+    allow_origins=cors_origins(),
     allow_credentials=False,
     allow_methods=["GET", "POST", "DELETE"],
     allow_headers=["Content-Type"],
@@ -73,7 +81,8 @@ def import_audit(
         epf_passbook_text=request.epf_passbook_text,
     )
     if not result.ok:
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=result.message)
+        status_code = status.HTTP_503_SERVICE_UNAVAILABLE if result.message == "Import queue is full." else status.HTTP_409_CONFLICT
+        raise HTTPException(status_code=status_code, detail=result.message)
 
     job_id = result.details["job_id"]
     if service.auto_start and not service.run_inline:
@@ -85,7 +94,7 @@ def import_audit(
 
 
 @app.get("/api/jobs/{job_id}", response_model=JobStatus)
-def get_job(job_id: str) -> JobStatus:
+def get_job(job_id: Annotated[str, ApiPath(pattern=JOB_ID_PATTERN)]) -> JobStatus:
     job = audit_service().get_job(job_id)
     if not job:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found.")
@@ -93,7 +102,7 @@ def get_job(job_id: str) -> JobStatus:
 
 
 @app.delete("/api/jobs/{job_id}", response_model=JobStatus)
-def cancel_job(job_id: str) -> JobStatus:
+def cancel_job(job_id: Annotated[str, ApiPath(pattern=JOB_ID_PATTERN)]) -> JobStatus:
     job = audit_service().cancel_job(job_id)
     if not job:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found.")

@@ -26,3 +26,12 @@ def test_mask_sensitive_does_not_redact_unlabeled_amounts_as_phone_numbers() -> 
     masked = mask_sensitive("Employer Contribution: 1234567890")
 
     assert "1234567890" in masked
+
+
+def test_mask_sensitive_redacts_unlabeled_uan_and_indian_phone() -> None:
+    masked = mask_sensitive("Reference 100200300400. Call 9876543210.")
+
+    assert "100200300400" not in masked
+    assert "9876543210" not in masked
+    assert "[UAN]" in masked
+    assert "[PHONE]" in masked

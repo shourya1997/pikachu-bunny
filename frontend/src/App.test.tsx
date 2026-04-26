@@ -64,6 +64,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  vi.clearAllMocks();
 });
 
 test('renders the local EPF audit shell', async () => {
@@ -82,4 +83,26 @@ test('runs a sample import and shows mismatch evidence state', async () => {
   expect(await screen.findByText(/confirmed mismatch/i)).toBeInTheDocument();
   expect(screen.getByText(/employer pf mismatch/i)).toBeInTheDocument();
   expect(screen.getByText(/salary slip reports 6000.00/i)).toBeInTheDocument();
+});
+
+test('shows startup errors from the local audit engine', async () => {
+  vi.mocked(fetchDemoAudit).mockRejectedValueOnce(new Error('Local audit engine is unavailable.'));
+
+  render(<App />);
+
+  expect(await screen.findByRole('status')).toHaveTextContent(/local audit engine is unavailable/i);
+});
+
+test('shows failed background job status', async () => {
+  vi.mocked(fetchJob).mockResolvedValueOnce({
+    job_id: 'job-1',
+    audit_id: 'demo',
+    state: 'failed',
+    progress: 100,
+  });
+
+  render(<App />);
+  fireEvent.click(await screen.findByRole('button', { name: /run sample audit/i }));
+
+  expect(await screen.findByRole('status')).toHaveTextContent(/audit job failed/i);
 });
