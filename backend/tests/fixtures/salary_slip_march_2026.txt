@@ -1,0 +1,11 @@
+SALARY SLIP
+Employee: Priya Sharma
+Employee ID: EMP12345
+PAN: ABCDE1234F
+UAN: 100200300400
+Address: 42 MG Road, Pune
+Month: March 2026
+Employer: Acme India Pvt Ltd
+Basic Wage: Rs. 50,000
+Employee PF: Rs. 6,000
+Employer PF: Rs. 6,000

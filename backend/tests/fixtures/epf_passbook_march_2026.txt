@@ -1,0 +1,7 @@
+EPF PASSBOOK
+Member: Priya Sharma
+UAN: 100200300400
+Wage Month: 2026-03
+Establishment: Acme India Private Limited
+Employee Contribution: 6,000
+Employer Contribution: 5,500

@@ -6,12 +6,12 @@ V1.0 focuses on one narrow truth check: salary slip PF expectations versus EPF p
 
 ## Current Status
 
-Phase 1 scaffold is in progress:
+Phase 2 truth engine is in progress:
 
 - FastAPI backend with typed V1 contracts
 - React/Vite frontend shell using the AuditOS direction
 - Docker production image and dev compose skeleton
-- Pytest and Vitest smoke tests
+- Synthetic EPF/salary fixtures, parsers, redaction, storage, and reconciliation tests
 
 ## Local Development
 

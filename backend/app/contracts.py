@@ -124,6 +124,7 @@ class AuditSummary(BaseModel):
     open_findings: int = 0
     evidence_ready_findings: int = 0
     sources: list[SourceMetadata] = Field(default_factory=list)
+    evidence: list[EvidenceSnippet] = Field(default_factory=list)
     findings: list[Finding] = Field(default_factory=list)
 
 
