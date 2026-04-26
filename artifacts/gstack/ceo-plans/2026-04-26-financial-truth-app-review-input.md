@@ -89,6 +89,8 @@ V1.0:
 - Add local FastAPI API plus web UI, dashboard, timeline, confidence states, partial states, unsupported states, bounded background jobs, local storage versioning, and masked evidence snippets.
 - Add fixture corpus with golden outputs for one EPF passbook format and two salary slip formats.
 - Add pytest backend tests, Vitest frontend state tests, and Playwright critical-path E2E tests.
+- Add Docker support: multi-container docker-compose for development (FastAPI + UI hot-reload), single production image via Dockerfile, GitHub Actions CI that builds and publishes to ghcr.io on merge to main.
+- Data volume: mount `~/.audit-os/data` on the host to `/app/data` in the container. Container must bind to `127.0.0.1` only, never `0.0.0.0`.
 
 V1.1:
 
@@ -105,7 +107,7 @@ V1.1:
 
 ## Open Questions
 
-- Which packaging layer should follow the V1.0 local FastAPI web app: desktop wrapper, signed installer, or developer-first local run scripts?
+- Which packaging layer should follow Docker: desktop wrapper (electron/tauri) or signed installer, now that Docker is the V1.0 distribution path?
 - Which source connector should ship first: EPF/UAN, bank statements, salary slips, Form 16, AIS, or Form 26AS?
 - What canonical schema should be public and stable for open-source contributors?
 - How should the app verify source authenticity without collecting credentials?
@@ -119,7 +121,8 @@ The user preferred the dashboard with all information and findings. The user als
 
 - Exact parser libraries for the first EPF passbook and salary slip fixture formats.
 - Public contributor-facing canonical schema.
-- Public packaging and installer workflow after local FastAPI web app validation.
+- Desktop wrapper or signed installer after Docker distribution is validated.
+- Docker image signing and attestation (cosign) after the initial ghcr.io publish workflow is stable.
 - Threat model.
 - Contributor workflow for open-source connectors.
 - Regulatory disclaimers and guardrails.
@@ -1111,6 +1114,7 @@ First implementation target: V1.0, not Proof 0.
 | OCR | OCR-only and scanned documents are unsupported in V1.0. Use file size caps and clear unsupported states. |
 | Score language | Keep "Truth score" only with scoped copy that says V1.0 checked EPF contribution records, not all financial truth. |
 | Packet export | Packet export UI is removed from V1.0. V1.0 shows evidence readiness. V1.1 owns packet review and export. |
+| Docker | Multi-container docker-compose for development (FastAPI + UI hot-reload containers). Single production image published to ghcr.io via GitHub Actions. Container binds to 127.0.0.1 only. Data volume: `~/.audit-os/data` on host → `/app/data` in container. |
 
 ### Updated V1.0 Architecture
 
@@ -1147,6 +1151,40 @@ Canonical records + selectors
   |-- evidence snippets
   |-- findings
   |-- audit states
+```
+
+### Docker Topology (V1.0)
+
+```text
+DEVELOPMENT (docker-compose.dev.yml)
+  ┌──────────────────────────────────────────┐
+  │  audit-api container                     │
+  │  FastAPI + uvicorn --reload              │
+  │  port: 127.0.0.1:8000                    │
+  │  volume: ~/.audit-os/data -> /app/data   │
+  └──────────────────────────────────────────┘
+  ┌──────────────────────────────────────────┐
+  │  audit-ui container                      │
+  │  Vite dev server with hot reload         │
+  │  port: 127.0.0.1:5173                    │
+  │  proxies /api/* -> audit-api:8000        │
+  └──────────────────────────────────────────┘
+
+PRODUCTION (docker-compose.yml / single image)
+  ┌──────────────────────────────────────────┐
+  │  ghcr.io/shourya1997/pikachu-bunny:tag   │
+  │  FastAPI serves /api/* + static UI build │
+  │  port: 127.0.0.1:8000 ONLY              │
+  │  volume: ~/.audit-os/data -> /app/data   │
+  └──────────────────────────────────────────┘
+
+CI (GitHub Actions on merge to main)
+  build → test → docker build → push to ghcr.io
+  tag: latest + sha-short
+
+PRIVACY RULE: container MUST NOT bind to 0.0.0.0.
+Any port binding outside 127.0.0.1 exposes raw
+financial evidence to the local network.
 ```
 
 ### EPF Reconciliation Decision Tree
@@ -1256,8 +1294,11 @@ Test plan artifact written for QA:
 | Storage | SQLite write failure or corrupt DB | Yes | Yes | Recovery message, existing audit not silently changed. |
 | Evidence | Snippet contains UAN/PAN/email/account | Yes | Yes | Masked snippet or blocked evidence display. |
 | UI | Local API unavailable | Yes | Yes | Local engine unavailable with retry/start instructions. |
+| Docker | Container binds to 0.0.0.0 instead of 127.0.0.1 | Yes | Yes | [P0] Private financial evidence exposed to local network. Dockerfile MUST set `--host 127.0.0.1`. |
+| Docker | Data volume not mounted, container restarted | Yes | Yes | User sees empty audit with no error. README must warn; healthcheck must verify /app/data is writable. |
+| Docker | ghcr.io push fails in CI | Yes | Yes | GitHub Actions build step fails visibly; no silent publish of a broken image. |
 
-Critical gaps flagged: none after accepted review decisions, assuming implementation adds the tests above before release.
+Critical gaps flagged: none after accepted review decisions, assuming implementation adds the tests above before release. Docker binding to 0.0.0.0 is a P0 privacy risk and must be caught by CI.
 
 ### Worktree Parallelization Strategy
 
@@ -1267,6 +1308,7 @@ Critical gaps flagged: none after accepted review decisions, assuming implementa
 | Schema and states | `schema/`, `shared/` | backend scaffold |
 | Parser fixtures | `connectors/`, `fixtures/`, `tests/` | schema and states |
 | Reconciliation | `reconciliation/`, `tests/` | parser fixtures |
+| Docker | `Dockerfile`, `docker-compose.yml`, `docker-compose.dev.yml`, `.github/workflows/docker.yml` | backend scaffold + frontend shell |
 | Frontend shell | `ui/`, `shared/` | schema and states |
 | Dashboard/timeline/evidence | `ui/` | frontend shell, API read models |
 | E2E tests | `e2e/`, `tests/` | backend + frontend flows |

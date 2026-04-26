@@ -10,7 +10,8 @@ Generated from `/plan-ceo-review` on 2026-04-26.
 - Add bank salary credit checks after bank statement fixtures are reliable.
 - Add CA review workflows only after packet exports are trusted.
 - Add multi-bank connector support after the connector contract stabilizes.
-- Decide whether to package a desktop wrapper, signed installer, or developer-first local distribution after the V1.0 local FastAPI web app works end to end.
+- Docker is the V1.0 distribution path (multi-container dev compose + single production image on ghcr.io). Decide whether to add a desktop wrapper or signed installer after Docker distribution is validated.
+- Add Docker image signing (cosign) and SBOM attestation after the initial ghcr.io publish workflow is stable.
 
 ## Design Review Follow-Ups
 
