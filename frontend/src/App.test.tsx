@@ -73,6 +73,7 @@ test('renders the local EPF audit shell', async () => {
   expect(screen.getByRole('heading', { name: /check salary slip pf/i })).toBeInTheDocument();
   expect(screen.getByText(/files stay on this device/i)).toBeInTheDocument();
   expect(await screen.findByText(/truth score checks only epf/i)).toBeInTheDocument();
+  expect(screen.getByText('...')).toBeInTheDocument();
 });
 
 test('runs a sample import and shows mismatch evidence state', async () => {
@@ -81,6 +82,7 @@ test('runs a sample import and shows mismatch evidence state', async () => {
   fireEvent.click(await screen.findByRole('button', { name: /run sample audit/i }));
 
   expect(await screen.findByText(/confirmed mismatch/i)).toBeInTheDocument();
+  expect(screen.getByText('50')).toBeInTheDocument();
   expect(screen.getByText(/employer pf mismatch/i)).toBeInTheDocument();
   expect(screen.getByText(/salary slip reports 6000.00/i)).toBeInTheDocument();
 });

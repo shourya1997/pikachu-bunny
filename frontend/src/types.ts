@@ -51,9 +51,16 @@ export type Finding = {
   result_code: string;
 };
 
+export type JobResult = {
+  ok: boolean;
+  code: string;
+  message: string;
+};
+
 export type JobStatus = {
   job_id: string;
   audit_id: string;
   state: 'queued' | 'running' | 'cancelled' | 'failed' | 'completed';
   progress: number;
+  result?: JobResult | null;
 };

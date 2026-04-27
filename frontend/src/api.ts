@@ -1,4 +1,4 @@
-import type { AuditSummary, Finding, JobStatus } from './types';
+import type { AuditSummary, Finding, JobResult, JobStatus } from './types';
 
 const auditStates = ['empty', 'processing', 'partial', 'clean', 'confirmed_mismatch', 'needs_review', 'unsupported', 'failed', 'cancelled'] as const;
 const jobStates = ['queued', 'running', 'cancelled', 'failed', 'completed'] as const;
@@ -51,6 +51,17 @@ function isAuditSummary(value: unknown): value is AuditSummary {
   );
 }
 
+function isJobResult(value: unknown): value is JobResult {
+  if (!isRecord(value)) {
+    return false;
+  }
+  return (
+    typeof value.ok === 'boolean' &&
+    typeof value.code === 'string' &&
+    typeof value.message === 'string'
+  );
+}
+
 function isJobStatus(value: unknown): value is JobStatus {
   if (!isRecord(value)) {
     return false;
@@ -59,7 +70,8 @@ function isJobStatus(value: unknown): value is JobStatus {
     typeof value.job_id === 'string' &&
     typeof value.audit_id === 'string' &&
     isOneOf(value.state, jobStates) &&
-    typeof value.progress === 'number'
+    typeof value.progress === 'number' &&
+    (value.result === undefined || value.result === null || isJobResult(value.result))
   );
 }
 

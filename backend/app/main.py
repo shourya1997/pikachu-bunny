@@ -34,8 +34,8 @@ def resolve_spa_path(static_root: Path, full_path: str) -> Path | None:
     return None
 
 app = FastAPI(
-    title="Pikachu Bunny Audit API",
-    version="0.1.0",
+    title="AuditOS - Local EPF Audit API",
+    version="0.1.1",
     description="Local-first EPF contribution audit API.",
 )
 app.state.audit_service = AuditService(DEFAULT_DATA_DIR / "audit.db")

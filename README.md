@@ -10,7 +10,7 @@ Exhaustive browser QA pass completed against the production Docker image. All cr
 
 - **Core flow**: POST import → background job → poll → GET audit works end-to-end in Docker
 - **Persistence**: audit survives container restart via `~/.audit-os/data` host volume
-- **Privacy**: port binds `127.0.0.1:8000` only — verified in smoke tests and CI gate
+- **Privacy**: `docker compose` binds the host port to `127.0.0.1:8000` only — verified in smoke tests and CI gate. If running standalone, use `docker run -p 127.0.0.1:8000:8000 ...`; the image itself listens on the container interface so Docker can route traffic.
 - **Accessibility**: keyboard focus ring (`button:focus-visible`) added — WCAG 2.1 AA
 - **Responsive**: mobile/tablet breakpoints improved; buttons go full-width at ≤900px
 - **Page title**: "AuditOS — Local EPF Audit" (was internal codename)
@@ -57,6 +57,12 @@ docker compose up --build
 ```
 
 The host port must bind to `127.0.0.1`, not all network interfaces. The app handles private financial evidence.
+
+Standalone Docker runs must also include the host IP prefix:
+
+```bash
+docker run --rm -p 127.0.0.1:8000:8000 -v "$HOME/.audit-os/data:/app/data" audit-os:local
+```
 
 ## Graphify
 
