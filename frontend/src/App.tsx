@@ -79,7 +79,7 @@ export function App() {
 
         <section className="panel primary">
           <p className="panel-label">Dashboard</p>
-          <div className="score">{audit ? audit.truth_score : '...'}</div>
+          <div className="score">{(audit && audit.state !== 'empty') ? audit.truth_score : '...'}</div>
           <p>{audit?.scoped_score_copy ?? 'Truth score checks only EPF contribution records in V1.0.'}</p>
           <p className="state-pill">{(audit?.state ?? 'empty').replace(/_/g, ' ')}</p>
           <ul>

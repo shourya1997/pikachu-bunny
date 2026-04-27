@@ -23,6 +23,11 @@ button:disabled {
   opacity: 0.5;
 }
 
+button:focus-visible {
+  outline: 3px solid #635bff;
+  outline-offset: 3px;
+}
+
 .app-shell {
   min-height: 100vh;
   padding: 48px;
@@ -58,7 +63,7 @@ h1 {
 .control-room {
   display: grid;
   gap: 20px;
-  grid-template-columns: 0.8fr 1.5fr 1fr;
+  grid-template-columns: minmax(180px, 0.8fr) 1.5fr minmax(180px, 1fr);
   margin-top: 40px;
 }
 
@@ -124,5 +129,19 @@ h1 {
 
   .control-room {
     grid-template-columns: 1fr;
+  }
+
+  .panel button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
   }
 }
