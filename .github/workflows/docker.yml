@@ -38,6 +38,10 @@ jobs:
         working-directory: frontend
         run: npm test -- --run
 
+      - name: Frontend typecheck
+        working-directory: frontend
+        run: npm run typecheck
+
       - name: Frontend build
         working-directory: frontend
         run: npm run build
@@ -51,12 +55,18 @@ jobs:
         run: |
           docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
           docker rm -f ci-smoke >/dev/null 2>&1 || true
+          trap 'docker rm -f ci-smoke' EXIT
           docker run -d --name ci-smoke \
             -p 127.0.0.1:8000:8000 \
             ghcr.io/${{ github.repository }}:${{ github.sha }}
-          trap 'docker rm -f ci-smoke' EXIT
-          sleep 5
-          curl -sf http://127.0.0.1:8000/api/health
+          for i in $(seq 1 30); do
+            curl -sf http://127.0.0.1:8000/api/health && break
+            if [ "$i" -eq 30 ]; then
+              docker logs ci-smoke
+              exit 1
+            fi
+            sleep 1
+          done
           curl -sf http://127.0.0.1:8000/ >/dev/null
 
   publish:
