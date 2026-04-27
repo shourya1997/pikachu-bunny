@@ -1,12 +1,12 @@
 # Graph Report - /Users/shourya/personal  (2026-04-27)
 
 ## Corpus Check
-- 33 files · ~34,451 words
+- 33 files · ~34,648 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 151 nodes · 292 edges · 19 communities detected
-- Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 110 edges (avg confidence: 0.75)
+- 152 nodes · 295 edges · 19 communities detected
+- Extraction: 63% EXTRACTED · 37% INFERRED · 0% AMBIGUOUS · INFERRED: 110 edges (avg confidence: 0.75)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
@@ -57,20 +57,20 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.13
-Nodes (28): CanonicalFact, SourceMetadata, ParsedDocument, normalize_amount(), normalize_employer(), normalize_period(), _content_hash(), _evidence_line() (+20 more)
+Cohesion: 0.12
+Nodes (22): AuditService, Single-process audit job coordinator for the local-only app., BaseModel, AuditState, AuditSummary, CanonicalFact, Confidence, failure() (+14 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.13
-Nodes (21): AuditService, Single-process audit job coordinator for the local-only app., BaseModel, AuditState, AuditSummary, Confidence, failure(), FindingSeverity (+13 more)
+Nodes (27): SourceMetadata, ParsedDocument, normalize_amount(), normalize_employer(), normalize_period(), _content_hash(), _evidence_line(), _fact() (+19 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.23
-Nodes (10): audit_service(), cancel_job(), get_audit(), get_job(), import_audit(), resolve_spa_path(), spa(), test_spa_blocks_path_traversal_outside_static_root() (+2 more)
+Cohesion: 0.3
+Nodes (12): fetchAudit(), fetchDemoAudit(), fetchJob(), isAuditSummary(), isFinding(), isJobResult(), isJobStatus(), isOneOf() (+4 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.31
-Nodes (11): fetchAudit(), fetchDemoAudit(), fetchJob(), isAuditSummary(), isFinding(), isJobStatus(), isOneOf(), isRecord() (+3 more)
+Cohesion: 0.23
+Nodes (10): audit_service(), cancel_job(), get_audit(), get_job(), import_audit(), resolve_spa_path(), spa(), test_spa_blocks_path_traversal_outside_static_root() (+2 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.33
@@ -81,12 +81,12 @@ Cohesion: 0.42
 Nodes (6): EvidenceSnippet, init_db(), load_audit_summary(), load_evidence_snippets(), save_audit_summary(), test_storage_round_trip_keeps_masked_evidence()
 
 ### Community 6 - "Community 6"
-Cohesion: 0.33
-Nodes (4): contract_metadata(), contracts(), test_contract_metadata_exposes_state_vocabularies(), test_result_failure_is_typed()
-
-### Community 7 - "Community 7"
 Cohesion: 0.67
 Nodes (5): Finding, _compare_month(), _evidence_ids_by_fact(), _facts_by_period(), reconcile_epf()
+
+### Community 7 - "Community 7"
+Cohesion: 0.33
+Nodes (4): contract_metadata(), contracts(), test_contract_metadata_exposes_state_vocabularies(), test_result_failure_is_typed()
 
 ### Community 8 - "Community 8"
 Cohesion: 0.47
@@ -153,12 +153,12 @@ Nodes (0):
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `AuditService` connect `Community 1` to `Community 9`, `Community 5`?**
-  _High betweenness centrality (0.146) - this node is a cross-community bridge._
-- **Why does `parse_salary_slip_text()` connect `Community 0` to `Community 1`, `Community 5`?**
-  _High betweenness centrality (0.117) - this node is a cross-community bridge._
-- **Why does `parse_epf_passbook_text()` connect `Community 0` to `Community 1`, `Community 5`?**
-  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+- **Why does `AuditService` connect `Community 0` to `Community 9`, `Community 5`?**
+  _High betweenness centrality (0.144) - this node is a cross-community bridge._
+- **Why does `parse_salary_slip_text()` connect `Community 1` to `Community 0`, `Community 5`?**
+  _High betweenness centrality (0.115) - this node is a cross-community bridge._
+- **Why does `parse_epf_passbook_text()` connect `Community 1` to `Community 0`, `Community 5`?**
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
 - **Are the 14 inferred relationships involving `parse_salary_slip_text()` (e.g. with `normalize_period()` and `normalize_amount()`) actually correct?**
   _`parse_salary_slip_text()` has 14 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 12 inferred relationships involving `AuditService` (e.g. with `ImportRequest` and `AuditSummary`) actually correct?**

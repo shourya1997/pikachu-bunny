@@ -36,7 +36,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/App.tsx",
       "source_location": "L1",
       "id": "users_shourya_personal_frontend_src_app_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "app.tsx"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/App.tsx",
       "source_location": "L42",
       "id": "app_runsampleaudit",
-      "community": 3,
+      "community": 2,
       "norm_label": "runsampleaudit()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L1",
       "id": "users_shourya_personal_frontend_src_api_ts",
-      "community": 3,
+      "community": 2,
       "norm_label": "api.ts"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L7",
       "id": "api_isoneof",
-      "community": 3,
+      "community": 2,
       "norm_label": "isoneof()"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L11",
       "id": "api_isrecord",
-      "community": 3,
+      "community": 2,
       "norm_label": "isrecord()"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L15",
       "id": "api_isstringarray",
-      "community": 3,
+      "community": 2,
       "norm_label": "isstringarray()"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L19",
       "id": "api_isfinding",
-      "community": 3,
+      "community": 2,
       "norm_label": "isfinding()"
     },
     {
@@ -117,52 +117,61 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L35",
       "id": "api_isauditsummary",
-      "community": 3,
+      "community": 2,
       "norm_label": "isauditsummary()"
+    },
+    {
+      "label": "isJobResult()",
+      "file_type": "code",
+      "source_file": "/Users/shourya/personal/frontend/src/api.ts",
+      "source_location": "L54",
+      "id": "api_isjobresult",
+      "community": 2,
+      "norm_label": "isjobresult()"
     },
     {
       "label": "isJobStatus()",
       "file_type": "code",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L54",
+      "source_location": "L65",
       "id": "api_isjobstatus",
-      "community": 3,
+      "community": 2,
       "norm_label": "isjobstatus()"
     },
     {
       "label": "fetchDemoAudit()",
       "file_type": "code",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L66",
+      "source_location": "L78",
       "id": "api_fetchdemoaudit",
-      "community": 3,
+      "community": 2,
       "norm_label": "fetchdemoaudit()"
     },
     {
       "label": "fetchAudit()",
       "file_type": "code",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L78",
+      "source_location": "L90",
       "id": "api_fetchaudit",
-      "community": 3,
+      "community": 2,
       "norm_label": "fetchaudit()"
     },
     {
       "label": "fetchJob()",
       "file_type": "code",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L90",
+      "source_location": "L102",
       "id": "api_fetchjob",
-      "community": 3,
+      "community": 2,
       "norm_label": "fetchjob()"
     },
     {
       "label": "startDemoImport()",
       "file_type": "code",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L102",
+      "source_location": "L114",
       "id": "api_startdemoimport",
-      "community": 3,
+      "community": 2,
       "norm_label": "startdemoimport()"
     },
     {
@@ -216,7 +225,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_contracts_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "contracts.py"
     },
     {
@@ -225,7 +234,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L9",
       "id": "contracts_sourcetype",
-      "community": 1,
+      "community": 0,
       "norm_label": "sourcetype"
     },
     {
@@ -234,7 +243,7 @@
       "source_file": "",
       "source_location": "",
       "id": "strenum",
-      "community": 1,
+      "community": 0,
       "norm_label": "strenum"
     },
     {
@@ -243,7 +252,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L14",
       "id": "contracts_confidence",
-      "community": 1,
+      "community": 0,
       "norm_label": "confidence"
     },
     {
@@ -252,7 +261,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L20",
       "id": "contracts_auditstate",
-      "community": 1,
+      "community": 0,
       "norm_label": "auditstate"
     },
     {
@@ -261,7 +270,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L32",
       "id": "contracts_jobstate",
-      "community": 1,
+      "community": 0,
       "norm_label": "jobstate"
     },
     {
@@ -270,7 +279,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L40",
       "id": "contracts_resultcode",
-      "community": 1,
+      "community": 0,
       "norm_label": "resultcode"
     },
     {
@@ -279,7 +288,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L59",
       "id": "contracts_result",
-      "community": 1,
+      "community": 0,
       "norm_label": "result"
     },
     {
@@ -288,7 +297,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 1,
+      "community": 0,
       "norm_label": "basemodel"
     },
     {
@@ -297,7 +306,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L66",
       "id": "contracts_success",
-      "community": 1,
+      "community": 0,
       "norm_label": "success()"
     },
     {
@@ -306,7 +315,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L70",
       "id": "contracts_failure",
-      "community": 1,
+      "community": 0,
       "norm_label": "failure()"
     },
     {
@@ -315,7 +324,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L74",
       "id": "contracts_sourcemetadata",
-      "community": 0,
+      "community": 1,
       "norm_label": "sourcemetadata"
     },
     {
@@ -342,7 +351,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L101",
       "id": "contracts_findingseverity",
-      "community": 1,
+      "community": 0,
       "norm_label": "findingseverity"
     },
     {
@@ -351,7 +360,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L107",
       "id": "contracts_finding",
-      "community": 7,
+      "community": 6,
       "norm_label": "finding"
     },
     {
@@ -360,7 +369,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L118",
       "id": "contracts_auditsummary",
-      "community": 1,
+      "community": 0,
       "norm_label": "auditsummary"
     },
     {
@@ -369,7 +378,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L131",
       "id": "contracts_jobstatus",
-      "community": 1,
+      "community": 0,
       "norm_label": "jobstatus"
     },
     {
@@ -378,7 +387,7 @@
       "source_file": "/Users/shourya/personal/backend/app/contracts.py",
       "source_location": "L139",
       "id": "contracts_contract_metadata",
-      "community": 6,
+      "community": 7,
       "norm_label": "contract_metadata()"
     },
     {
@@ -387,7 +396,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_main_py",
-      "community": 2,
+      "community": 3,
       "norm_label": "main.py"
     },
     {
@@ -396,7 +405,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L23",
       "id": "main_cors_origins",
-      "community": 2,
+      "community": 3,
       "norm_label": "cors_origins()"
     },
     {
@@ -405,7 +414,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L30",
       "id": "main_resolve_spa_path",
-      "community": 2,
+      "community": 3,
       "norm_label": "resolve_spa_path()"
     },
     {
@@ -414,7 +423,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L53",
       "id": "main_health",
-      "community": 2,
+      "community": 3,
       "norm_label": "health()"
     },
     {
@@ -423,7 +432,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L58",
       "id": "main_contracts",
-      "community": 6,
+      "community": 7,
       "norm_label": "contracts()"
     },
     {
@@ -432,7 +441,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L62",
       "id": "main_importrequest",
-      "community": 1,
+      "community": 0,
       "norm_label": "importrequest"
     },
     {
@@ -441,7 +450,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L67",
       "id": "main_audit_service",
-      "community": 2,
+      "community": 3,
       "norm_label": "audit_service()"
     },
     {
@@ -450,7 +459,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L72",
       "id": "main_import_audit",
-      "community": 2,
+      "community": 3,
       "norm_label": "import_audit()"
     },
     {
@@ -459,7 +468,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L97",
       "id": "main_get_job",
-      "community": 2,
+      "community": 3,
       "norm_label": "get_job()"
     },
     {
@@ -468,7 +477,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L105",
       "id": "main_cancel_job",
-      "community": 2,
+      "community": 3,
       "norm_label": "cancel_job()"
     },
     {
@@ -477,7 +486,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L113",
       "id": "main_get_audit",
-      "community": 2,
+      "community": 3,
       "norm_label": "get_audit()"
     },
     {
@@ -486,7 +495,7 @@
       "source_file": "/Users/shourya/personal/backend/app/main.py",
       "source_location": "L132",
       "id": "main_spa",
-      "community": 2,
+      "community": 3,
       "norm_label": "spa()"
     },
     {
@@ -513,7 +522,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/models.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_engine_models_py",
-      "community": 0,
+      "community": 1,
       "norm_label": "models.py"
     },
     {
@@ -522,7 +531,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/models.py",
       "source_location": "L9",
       "id": "models_parseddocument",
-      "community": 0,
+      "community": 1,
       "norm_label": "parseddocument"
     },
     {
@@ -540,7 +549,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_engine_parsers_py",
-      "community": 0,
+      "community": 1,
       "norm_label": "parsers.py"
     },
     {
@@ -549,7 +558,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L16",
       "id": "parsers_content_hash",
-      "community": 0,
+      "community": 1,
       "norm_label": "_content_hash()"
     },
     {
@@ -558,7 +567,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L20",
       "id": "parsers_line_value",
-      "community": 0,
+      "community": 1,
       "norm_label": "_line_value()"
     },
     {
@@ -567,7 +576,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L25",
       "id": "parsers_source",
-      "community": 0,
+      "community": 1,
       "norm_label": "_source()"
     },
     {
@@ -576,7 +585,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L36",
       "id": "parsers_fact",
-      "community": 0,
+      "community": 1,
       "norm_label": "_fact()"
     },
     {
@@ -585,7 +594,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L47",
       "id": "parsers_snippet",
-      "community": 0,
+      "community": 1,
       "norm_label": "_snippet()"
     },
     {
@@ -594,7 +603,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L58",
       "id": "parsers_failure",
-      "community": 0,
+      "community": 1,
       "norm_label": "_failure()"
     },
     {
@@ -603,7 +612,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L74",
       "id": "parsers_parse_salary_slip_text",
-      "community": 0,
+      "community": 1,
       "norm_label": "parse_salary_slip_text()"
     },
     {
@@ -612,7 +621,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L100",
       "id": "parsers_parse_epf_passbook_text",
-      "community": 0,
+      "community": 1,
       "norm_label": "parse_epf_passbook_text()"
     },
     {
@@ -621,7 +630,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L124",
       "id": "parsers_required",
-      "community": 0,
+      "community": 1,
       "norm_label": "_required()"
     },
     {
@@ -630,7 +639,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/parsers.py",
       "source_location": "L131",
       "id": "parsers_evidence_line",
-      "community": 0,
+      "community": 1,
       "norm_label": "_evidence_line()"
     },
     {
@@ -684,7 +693,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/normalization.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_engine_normalization_py",
-      "community": 0,
+      "community": 1,
       "norm_label": "normalization.py"
     },
     {
@@ -693,7 +702,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/normalization.py",
       "source_location": "L33",
       "id": "normalization_normalize_period",
-      "community": 0,
+      "community": 1,
       "norm_label": "normalize_period()"
     },
     {
@@ -702,7 +711,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/normalization.py",
       "source_location": "L48",
       "id": "normalization_normalize_amount",
-      "community": 0,
+      "community": 1,
       "norm_label": "normalize_amount()"
     },
     {
@@ -711,7 +720,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/normalization.py",
       "source_location": "L59",
       "id": "normalization_normalize_employer",
-      "community": 0,
+      "community": 1,
       "norm_label": "normalize_employer()"
     },
     {
@@ -720,7 +729,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/reconcile.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_engine_reconcile_py",
-      "community": 7,
+      "community": 6,
       "norm_label": "reconcile.py"
     },
     {
@@ -729,7 +738,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/reconcile.py",
       "source_location": "L9",
       "id": "reconcile_reconcile_epf",
-      "community": 7,
+      "community": 6,
       "norm_label": "reconcile_epf()"
     },
     {
@@ -738,7 +747,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/reconcile.py",
       "source_location": "L79",
       "id": "reconcile_facts_by_period",
-      "community": 7,
+      "community": 6,
       "norm_label": "_facts_by_period()"
     },
     {
@@ -747,7 +756,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/reconcile.py",
       "source_location": "L111",
       "id": "reconcile_evidence_ids_by_fact",
-      "community": 7,
+      "community": 6,
       "norm_label": "_evidence_ids_by_fact()"
     },
     {
@@ -756,7 +765,7 @@
       "source_file": "/Users/shourya/personal/backend/app/engine/reconcile.py",
       "source_location": "L120",
       "id": "reconcile_compare_month",
-      "community": 7,
+      "community": 6,
       "norm_label": "_compare_month()"
     },
     {
@@ -774,7 +783,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_app_services_audit_service_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "audit_service.py"
     },
     {
@@ -783,7 +792,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L13",
       "id": "audit_service_auditservice",
-      "community": 1,
+      "community": 0,
       "norm_label": "auditservice"
     },
     {
@@ -792,7 +801,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L16",
       "id": "audit_service_auditservice_init",
-      "community": 1,
+      "community": 0,
       "norm_label": ".__init__()"
     },
     {
@@ -801,7 +810,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L26",
       "id": "audit_service_auditservice_submit_import",
-      "community": 1,
+      "community": 0,
       "norm_label": ".submit_import()"
     },
     {
@@ -810,7 +819,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L46",
       "id": "audit_service_auditservice_run_job",
-      "community": 1,
+      "community": 0,
       "norm_label": ".run_job()"
     },
     {
@@ -819,7 +828,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L100",
       "id": "audit_service_auditservice_get_job",
-      "community": 1,
+      "community": 0,
       "norm_label": ".get_job()"
     },
     {
@@ -828,7 +837,7 @@
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L104",
       "id": "audit_service_auditservice_cancel_job",
-      "community": 1,
+      "community": 0,
       "norm_label": ".cancel_job()"
     },
     {
@@ -845,7 +854,7 @@
       "file_type": "rationale",
       "source_file": "/Users/shourya/personal/backend/app/services/audit_service.py",
       "source_location": "L14",
-      "community": 1,
+      "community": 0,
       "norm_label": "single-process audit job coordinator for the local-only app.",
       "id": "audit_service_rationale_14"
     },
@@ -927,7 +936,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_contracts.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_tests_test_contracts_py",
-      "community": 6,
+      "community": 7,
       "norm_label": "test_contracts.py"
     },
     {
@@ -936,7 +945,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_contracts.py",
       "source_location": "L4",
       "id": "test_contracts_test_contract_metadata_exposes_state_vocabularies",
-      "community": 6,
+      "community": 7,
       "norm_label": "test_contract_metadata_exposes_state_vocabularies()"
     },
     {
@@ -945,7 +954,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_contracts.py",
       "source_location": "L13",
       "id": "test_contracts_test_result_failure_is_typed",
-      "community": 6,
+      "community": 7,
       "norm_label": "test_result_failure_is_typed()"
     },
     {
@@ -954,7 +963,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_contracts.py",
       "source_location": "L20",
       "id": "test_contracts_test_audit_state_contains_partial_not_false_mismatch",
-      "community": 6,
+      "community": 7,
       "norm_label": "test_audit_state_contains_partial_not_false_mismatch()"
     },
     {
@@ -963,7 +972,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_parsers.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_tests_test_parsers_py",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_parsers.py"
     },
     {
@@ -972,7 +981,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_parsers.py",
       "source_location": "L9",
       "id": "test_parsers_test_parse_salary_slip_extracts_canonical_facts_and_masked_snippets",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_parse_salary_slip_extracts_canonical_facts_and_masked_snippets()"
     },
     {
@@ -981,7 +990,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_parsers.py",
       "source_location": "L24",
       "id": "test_parsers_test_parse_epf_passbook_extracts_canonical_facts",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_parse_epf_passbook_extracts_canonical_facts()"
     },
     {
@@ -990,7 +999,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_parsers.py",
       "source_location": "L35",
       "id": "test_parsers_test_parse_salary_slip_fails_on_unsupported_layout",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_parse_salary_slip_fails_on_unsupported_layout()"
     },
     {
@@ -999,7 +1008,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_parsers.py",
       "source_location": "L42",
       "id": "test_parsers_test_parse_salary_slip_rejects_large_input",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_parse_salary_slip_rejects_large_input()"
     },
     {
@@ -1008,7 +1017,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_spa_static.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_tests_test_spa_static_py",
-      "community": 2,
+      "community": 3,
       "norm_label": "test_spa_static.py"
     },
     {
@@ -1017,7 +1026,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_spa_static.py",
       "source_location": "L6",
       "id": "test_spa_static_test_spa_resolves_file_inside_static_root",
-      "community": 2,
+      "community": 3,
       "norm_label": "test_spa_resolves_file_inside_static_root()"
     },
     {
@@ -1026,7 +1035,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_spa_static.py",
       "source_location": "L15",
       "id": "test_spa_static_test_spa_blocks_path_traversal_outside_static_root",
-      "community": 2,
+      "community": 3,
       "norm_label": "test_spa_blocks_path_traversal_outside_static_root()"
     },
     {
@@ -1035,7 +1044,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_spa_static.py",
       "source_location": "L24",
       "id": "test_spa_static_test_spa_blocks_symlink_to_file_outside_static_root",
-      "community": 2,
+      "community": 3,
       "norm_label": "test_spa_blocks_symlink_to_file_outside_static_root()"
     },
     {
@@ -1062,7 +1071,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_tests_test_import_api_py",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_import_api.py"
     },
     {
@@ -1071,7 +1080,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L14",
       "id": "test_import_api_client",
-      "community": 1,
+      "community": 0,
       "norm_label": "client()"
     },
     {
@@ -1080,7 +1089,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L19",
       "id": "test_import_api_test_import_endpoint_creates_job_and_audit_summary",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_import_endpoint_creates_job_and_audit_summary()"
     },
     {
@@ -1089,7 +1098,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L42",
       "id": "test_import_api_test_import_endpoint_rejects_second_active_job",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_import_endpoint_rejects_second_active_job()"
     },
     {
@@ -1098,7 +1107,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L60",
       "id": "test_import_api_test_cancel_queued_job",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_cancel_queued_job()"
     },
     {
@@ -1107,7 +1116,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L78",
       "id": "test_import_api_test_cancel_running_job_skips_persistence",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_cancel_running_job_skips_persistence()"
     },
     {
@@ -1116,7 +1125,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L104",
       "id": "test_import_api_test_import_endpoint_rejects_invalid_audit_id",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_import_endpoint_rejects_invalid_audit_id()"
     },
     {
@@ -1125,7 +1134,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L116",
       "id": "test_import_api_test_job_endpoint_rejects_invalid_job_id",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_job_endpoint_rejects_invalid_job_id()"
     },
     {
@@ -1134,7 +1143,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L122",
       "id": "test_import_api_test_import_endpoint_rejects_oversized_text",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_import_endpoint_rejects_oversized_text()"
     },
     {
@@ -1143,7 +1152,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_import_api.py",
       "source_location": "L134",
       "id": "test_import_api_test_import_endpoint_reports_queue_full",
-      "community": 1,
+      "community": 0,
       "norm_label": "test_import_endpoint_reports_queue_full()"
     },
     {
@@ -1233,7 +1242,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_reconciliation.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_tests_test_reconciliation_py",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_reconciliation.py"
     },
     {
@@ -1242,7 +1251,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_reconciliation.py",
       "source_location": "L10",
       "id": "test_reconciliation_test_reconcile_epf_flags_confirmed_mismatch",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_reconcile_epf_flags_confirmed_mismatch()"
     },
     {
@@ -1251,7 +1260,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_reconciliation.py",
       "source_location": "L26",
       "id": "test_reconciliation_test_reconcile_epf_reports_clean_when_amounts_match",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_reconcile_epf_reports_clean_when_amounts_match()"
     },
     {
@@ -1260,7 +1269,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_reconciliation.py",
       "source_location": "L42",
       "id": "test_reconciliation_test_reconcile_epf_reports_duplicate_source_for_same_period",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_reconcile_epf_reports_duplicate_source_for_same_period()"
     },
     {
@@ -1269,7 +1278,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_reconciliation.py",
       "source_location": "L53",
       "id": "test_reconciliation_test_reconcile_epf_links_employer_name_evidence",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_reconcile_epf_links_employer_name_evidence()"
     },
     {
@@ -1278,7 +1287,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_normalization.py",
       "source_location": "L1",
       "id": "users_shourya_personal_backend_tests_test_normalization_py",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_normalization.py"
     },
     {
@@ -1287,7 +1296,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_normalization.py",
       "source_location": "L6",
       "id": "test_normalization_test_normalize_period_handles_named_and_iso_months",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_normalize_period_handles_named_and_iso_months()"
     },
     {
@@ -1296,7 +1305,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_normalization.py",
       "source_location": "L11",
       "id": "test_normalization_test_normalize_period_rejects_invalid_iso_month",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_normalize_period_rejects_invalid_iso_month()"
     },
     {
@@ -1305,7 +1314,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_normalization.py",
       "source_location": "L20",
       "id": "test_normalization_test_normalize_amount_strips_currency_and_grouping",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_normalize_amount_strips_currency_and_grouping()"
     },
     {
@@ -1314,7 +1323,7 @@
       "source_file": "/Users/shourya/personal/backend/tests/test_normalization.py",
       "source_location": "L25",
       "id": "test_normalization_test_normalize_employer_removes_legal_suffix_noise",
-      "community": 0,
+      "community": 1,
       "norm_label": "test_normalize_employer_removes_legal_suffix_noise()"
     },
     {
@@ -1467,6 +1476,18 @@
       "source_location": "L54",
       "weight": 1.0,
       "_src": "users_shourya_personal_frontend_src_api_ts",
+      "_tgt": "api_isjobresult",
+      "source": "users_shourya_personal_frontend_src_api_ts",
+      "target": "api_isjobresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/shourya/personal/frontend/src/api.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "users_shourya_personal_frontend_src_api_ts",
       "_tgt": "api_isjobstatus",
       "source": "users_shourya_personal_frontend_src_api_ts",
       "target": "api_isjobstatus",
@@ -1476,7 +1497,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L66",
+      "source_location": "L78",
       "weight": 1.0,
       "_src": "users_shourya_personal_frontend_src_api_ts",
       "_tgt": "api_fetchdemoaudit",
@@ -1488,7 +1509,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L78",
+      "source_location": "L90",
       "weight": 1.0,
       "_src": "users_shourya_personal_frontend_src_api_ts",
       "_tgt": "api_fetchaudit",
@@ -1500,7 +1521,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L90",
+      "source_location": "L102",
       "weight": 1.0,
       "_src": "users_shourya_personal_frontend_src_api_ts",
       "_tgt": "api_fetchjob",
@@ -1512,7 +1533,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L102",
+      "source_location": "L114",
       "weight": 1.0,
       "_src": "users_shourya_personal_frontend_src_api_ts",
       "_tgt": "api_startdemoimport",
@@ -1548,7 +1569,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L61",
+      "source_location": "L72",
       "weight": 1.0,
       "_src": "api_isjobstatus",
       "_tgt": "api_isoneof",
@@ -1586,6 +1607,18 @@
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
       "source_location": "L55",
       "weight": 1.0,
+      "_src": "api_isjobresult",
+      "_tgt": "api_isrecord",
+      "source": "api_isrecord",
+      "target": "api_isjobresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/shourya/personal/frontend/src/api.ts",
+      "source_location": "L66",
+      "weight": 1.0,
       "_src": "api_isjobstatus",
       "_tgt": "api_isrecord",
       "source": "api_isrecord",
@@ -1608,7 +1641,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L72",
+      "source_location": "L84",
       "weight": 1.0,
       "_src": "api_fetchdemoaudit",
       "_tgt": "api_isauditsummary",
@@ -1620,7 +1653,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L84",
+      "source_location": "L96",
       "weight": 1.0,
       "_src": "api_fetchaudit",
       "_tgt": "api_isauditsummary",
@@ -1632,7 +1665,19 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L96",
+      "source_location": "L74",
+      "weight": 1.0,
+      "_src": "api_isjobstatus",
+      "_tgt": "api_isjobresult",
+      "source": "api_isjobresult",
+      "target": "api_isjobstatus",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/shourya/personal/frontend/src/api.ts",
+      "source_location": "L108",
       "weight": 1.0,
       "_src": "api_fetchjob",
       "_tgt": "api_isjobstatus",
@@ -1644,7 +1689,7 @@
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "/Users/shourya/personal/frontend/src/api.ts",
-      "source_location": "L115",
+      "source_location": "L127",
       "weight": 1.0,
       "_src": "api_startdemoimport",
       "_tgt": "api_isjobstatus",
