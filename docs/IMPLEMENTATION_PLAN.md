@@ -35,7 +35,7 @@ Exit criteria:
 - Commit and push.
 - Save context.
 
-## Phase 3: Product Flow
+## Phase 3: Product Flow (Completed)
 
 Goal: connect the engine to the user-facing app.
 
@@ -46,17 +46,29 @@ Goal: connect the engine to the user-facing app.
 
 Exit criteria:
 
-- Backend and frontend tests pass.
-- Critical path works locally.
-- Commit and push.
-- Save context.
+- ✅ Backend and frontend tests pass.
+- ✅ Critical path works locally.
+- ✅ Committed and pushed (`afd309a`, `dc96bea`).
+- ✅ Context saved.
 
-## Phase 4: Review, QA, Hardening
+## Phase 4: Review, QA, Hardening (Completed)
 
 Goal: run review and QA loops, then fix what they find.
 
-- Run `/review` equivalent on the diff.
-- Implement review fixes.
-- Run `/qa` equivalent: backend tests, frontend tests, Docker privacy, Docker build, and browser smoke if available.
-- Implement QA fixes.
-- Final commit, push, readiness report.
+- ✅ Review fixes: test DB isolation, route shadowing removed, evidence hydration, cancel race fixed.
+- ✅ QA fixes: input validation, CORS hardening, redaction fallback patterns.
+- ✅ Backend tests: 39 passed.
+- ✅ Frontend tests: 4 passed.
+- ✅ Docker privacy check passed.
+- ✅ HTTP smoke test passed.
+- ✅ Committed and pushed (`dc96bea`).
+
+## Phase 5: Release Preparation
+
+Goal: finalize documentation and prepare for first release.
+
+- Update all documentation to reflect current state.
+- Browser-based QA verification.
+- Docker image build verification.
+- Version bump decision.
+- Release notes preparation.
