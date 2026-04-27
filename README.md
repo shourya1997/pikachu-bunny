@@ -4,17 +4,22 @@ Privacy-first EPF contribution audit for Indian salaried employees.
 
 V1.0 focuses on one narrow truth check: salary slip PF expectations versus EPF passbook credits. Files stay local. The app stores normalized facts, findings, source metadata, hashes, and masked evidence snippets, not raw documents by default.
 
-## Current Status
+## Current Status — v0.1.1 (QA-verified, Docker ship-ready)
 
-Phase 3 import flow is complete:
+Exhaustive browser QA pass completed against the production Docker image. All critical and high findings fixed:
 
-- FastAPI backend with import/job/audit endpoints and SQLite storage
-- React/Vite frontend with working sample import and mismatch detection
-- Docker production image and dev compose skeleton
-- Synthetic EPF/salary fixtures, parsers, redaction, reconciliation, and full test coverage
-- Graphify local code navigation integrated
+- **Core flow**: POST import → background job → poll → GET audit works end-to-end in Docker
+- **Persistence**: audit survives container restart via `~/.audit-os/data` host volume
+- **Privacy**: port binds `127.0.0.1:8000` only — verified in smoke tests and CI gate
+- **Accessibility**: keyboard focus ring (`button:focus-visible`) added — WCAG 2.1 AA
+- **Responsive**: mobile/tablet breakpoints improved; buttons go full-width at ≤900px
+- **Page title**: "AuditOS — Local EPF Audit" (was internal codename)
+- **Multi-arch Docker**: `linux/amd64` and `linux/arm64` both build and pass smoke tests
+- **CI**: PR builds use fast single-arch; main push triggers multi-arch buildx push to GHCR
 
-See [Implementation Plan](docs/IMPLEMENTATION_PLAN.md) for Phase 4 hardening and release preparation.
+All 39 backend tests and 4 frontend tests pass. Docker image runs as non-root `appuser` with a passing healthcheck.
+
+See [Implementation Plan](docs/IMPLEMENTATION_PLAN.md) for remaining deferred scope.
 
 ## Local Development
 
