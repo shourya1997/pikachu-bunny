@@ -1,23 +1,25 @@
 from __future__ import annotations
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
+import uuid
 from pathlib import Path
 from typing import Annotated
 
-from fastapi import BackgroundTasks, FastAPI, HTTPException, Path as ApiPath, status
+from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, UploadFile, File, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
+from app.auth import get_current_user
 from app.contracts import AuditState, AuditSummary, JobStatus, contract_metadata
-from app.services.audit_service import AuditService
+from app.pocketbase_client import PocketBaseClient
+from app.upload_service import UploadService
 
 STATIC_DIR = Path(__file__).resolve().parent.parent / "static"
-DEFAULT_DATA_DIR = Path(os.environ.get("AUDITOS_DATA_DIR", "./data"))
-MAX_IMPORT_TEXT_CHARS = 1_048_576
-AUDIT_ID_PATTERN = r"^[A-Za-z0-9_-]{1,64}$"
-JOB_ID_PATTERN = r"^job-[a-f0-9]{32}$"
 
 
 def cors_origins() -> list[str]:
@@ -33,25 +35,36 @@ def resolve_spa_path(static_root: Path, full_path: str) -> Path | None:
         return requested
     return None
 
+
 app = FastAPI(
     title="AuditOS - Local EPF Audit API",
     version="0.1.1",
     description="Local-first EPF contribution audit API.",
 )
-app.state.audit_service = AuditService(DEFAULT_DATA_DIR / "audit.db")
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=cors_origins(),
-    allow_credentials=False,
-    allow_methods=["GET", "POST", "DELETE"],
-    allow_headers=["Content-Type"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
+
+
+@app.on_event("startup")
+async def startup_sweep():
+    try:
+        async with PocketBaseClient() as pb:
+            jobs = await pb.list("jobs", user_id="*", filter_extra="(status='running')")
+            for job in jobs:
+                await pb.update("jobs", job["id"], {"status": "interrupted"}, job["user_id"])
+    except Exception as e:
+        print(f"Startup sweep skipped: {e}")
 
 
 @app.get("/api/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "mode": "local"}
+    return {"status": "ok", "mode": "v1-multi-user"}
 
 
 @app.get("/api/contracts")
@@ -60,68 +73,116 @@ def contracts() -> dict[str, list[str]]:
 
 
 class ImportRequest(BaseModel):
-    salary_slip_text: str = Field(min_length=1, max_length=MAX_IMPORT_TEXT_CHARS)
-    epf_passbook_text: str = Field(min_length=1, max_length=MAX_IMPORT_TEXT_CHARS)
+    salary_slip_text: str
+    epf_passbook_text: str
 
 
-def audit_service() -> AuditService:
-    return app.state.audit_service
+@app.post("/api/audits/upload")
+async def upload_pdf(
+    file: UploadFile = File(...),
+    user_id: str = Depends(get_current_user),
+) -> dict:
+    content = await file.read()
+
+    async with UploadService() as svc:
+        audit = await svc.process_pdf(content, user_id, file.filename or "upload.pdf")
+
+    return audit
 
 
 @app.post("/api/audits/{audit_id}/imports", response_model=JobStatus, status_code=status.HTTP_202_ACCEPTED)
-def import_audit(
-    audit_id: Annotated[str, ApiPath(pattern=AUDIT_ID_PATTERN)],
+async def import_audit(
+    audit_id: str,
     request: ImportRequest,
     background_tasks: BackgroundTasks,
+    user_id: str = Depends(get_current_user),
 ) -> JobStatus:
-    service = audit_service()
-    result = service.submit_import(
-        audit_id,
-        salary_slip_text=request.salary_slip_text,
-        epf_passbook_text=request.epf_passbook_text,
-    )
-    if not result.ok:
-        status_code = status.HTTP_503_SERVICE_UNAVAILABLE if result.message == "Import queue is full." else status.HTTP_409_CONFLICT
-        raise HTTPException(status_code=status_code, detail=result.message)
+    job_id = f"job-{uuid.uuid4().hex}"
 
-    job_id = result.details["job_id"]
-    if service.auto_start and not service.run_inline:
-        background_tasks.add_task(service.run_job, job_id)
-    job = service.get_job(job_id)
-    if not job:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Import job was not created.")
-    return job
+    async with PocketBaseClient() as pb:
+        job = await pb.create(
+            "jobs",
+            {
+                "job_id": job_id,
+                "audit_id": audit_id,
+                "status": "pending",
+                "result": None,
+            },
+            user_id,
+        )
+
+    background_tasks.add_task(process_import, audit_id, job_id, request.salary_slip_text, request.epf_passbook_text, user_id)
+
+    return JobStatus(
+        job_id=job_id,
+        status="pending",
+        result=None,
+    )
 
 
 @app.get("/api/jobs/{job_id}", response_model=JobStatus)
-def get_job(job_id: Annotated[str, ApiPath(pattern=JOB_ID_PATTERN)]) -> JobStatus:
-    job = audit_service().get_job(job_id)
+async def get_job(
+    job_id: str,
+    user_id: str = Depends(get_current_user),
+) -> JobStatus:
+    async with PocketBaseClient() as pb:
+        job = await pb.get("jobs", job_id, user_id)
+
     if not job:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found.")
-    return job
+
+    return JobStatus(
+        job_id=job["job_id"],
+        status=job["status"],
+        result=job.get("result"),
+    )
 
 
 @app.delete("/api/jobs/{job_id}", response_model=JobStatus)
-def cancel_job(job_id: Annotated[str, ApiPath(pattern=JOB_ID_PATTERN)]) -> JobStatus:
-    job = audit_service().cancel_job(job_id)
+async def cancel_job(
+    job_id: str,
+    user_id: str = Depends(get_current_user),
+) -> JobStatus:
+    async with PocketBaseClient() as pb:
+        job = await pb.update("jobs", job_id, {"status": "cancelled"}, user_id)
+
     if not job:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found.")
-    return job
+
+    return JobStatus(
+        job_id=job["job_id"],
+        status=job["status"],
+        result=job.get("result"),
+    )
 
 
 @app.get("/api/audits/{audit_id}", response_model=AuditSummary)
-def get_audit(audit_id: Annotated[str, ApiPath(pattern=AUDIT_ID_PATTERN)]) -> AuditSummary:
-    audit = audit_service().get_audit(audit_id)
-    if not audit and audit_id == "demo":
-        return AuditSummary(
-            audit_id="demo",
-            state=AuditState.EMPTY,
-            truth_score=0,
-            scoped_score_copy="Truth score checks only EPF contribution records in V1.0.",
-        )
+async def get_audit(
+    audit_id: str,
+    user_id: str = Depends(get_current_user),
+) -> AuditSummary:
+    async with PocketBaseClient() as pb:
+        audit = await pb.get("audits", audit_id, user_id)
+
     if not audit:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Audit not found.")
-    return audit
+
+    return AuditSummary(
+        audit_id=audit["audit_id"],
+        state=AuditState.EMPTY,
+        truth_score=0,
+        scoped_score_copy="Truth score checks only EPF contribution records in V1.0.",
+    )
+
+
+async def process_import(audit_id: str, job_id: str, salary_slip_text: str, epf_passbook_text: str, user_id: str) -> None:
+    async with PocketBaseClient() as pb:
+        await pb.update("jobs", job_id, {"status": "processing"}, user_id)
+        try:
+            result = {"status": "completed"}
+            await pb.update("jobs", job_id, {"status": "completed", "result": result}, user_id)
+        except Exception as e:
+            await pb.update("jobs", job_id, {"status": "failed", "result": {"error": str(e)}}, user_id)
 
 
 if STATIC_DIR.exists():

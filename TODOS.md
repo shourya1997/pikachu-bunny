@@ -18,6 +18,14 @@ Generated from `/plan-ceo-review` on 2026-04-26.
 - Decide the packet export format and packet review template before V1.1. The packet must be useful for HR, EPFO, or CA review, not merely safe to export.
 - Run a mobile and accessibility prototype check once the first dashboard, timeline, evidence drawer, and packet review screen exist.
 
+## Cloud Deployment Follow-Ups (from /plan-ceo-review 2026-04-28)
+
+- **Rate limiting on upload endpoint**: Add `slowapi` rate limit (1 req/10s per user) to `POST /api/import/upload` before any public announcement. Upload triggers CPU-heavy pdfplumber + background job — no limit = one user can saturate the machine.
+- **pdfplumber 30s parse timeout**: Wrap `pdfplumber` extraction in `concurrent.futures.ThreadPoolExecutor` with `future.result(timeout=30)` to prevent malformed PDFs hanging background threads indefinitely.
+- **Data deletion / right to delete**: Add `DELETE /api/me` endpoint + cascade delete all user records from PocketBase before EU or enterprise users. Required for DPDP compliance.
+- **Phase 2 storage decision**: After first 10 real users, choose between Cloudflare R2 (simpler, signed download URL) and Google Drive (second "Connect Drive" OAuth, more user trust). Decide based on what privacy story resonates with Indian users.
+- **Google OAuth verification**: Start verification request immediately after first deploy — 4-6 week review period, 100 test-user cap until approved.
+
 ## Engineering Review Follow-Ups
 
 - Define a redacted-real fixture contribution process after synthetic fixtures prove the parser contract. The process must prevent private salary, UAN, PAN, employer, and account data from entering the public repo.

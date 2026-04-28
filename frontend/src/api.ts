@@ -1,3 +1,4 @@
+import { supabase } from './lib/supabase'
 import type { AuditSummary, Finding, JobResult, JobStatus } from './types';
 
 const auditStates = ['empty', 'processing', 'partial', 'clean', 'confirmed_mismatch', 'needs_review', 'unsupported', 'failed', 'cancelled'] as const;
@@ -150,3 +151,47 @@ Wage Month: 2026-03
 Establishment: Demo Payroll Private Limited
 Employee Contribution: 6,000
 Employer Contribution: 5,500`;
+
+async function authHeaders(): Promise<HeadersInit> {
+  const { data } = await supabase.auth.getSession()
+  const token = data.session?.access_token
+  if (!token) throw new Error('Not authenticated')
+  return { Authorization: `Bearer ${token}` }
+}
+
+export async function uploadAudit(salarySlip: File, epfPassbook: File): Promise<{ job_id: string; audit_id: string }> {
+  const formData = new FormData()
+  formData.append('salary_slip_pdf', salarySlip)
+  formData.append('epf_passbook_pdf', epfPassbook)
+  const res = await fetch('/api/audits/upload', {
+    method: 'POST',
+    headers: await authHeaders(),
+    body: formData,
+  })
+  if (!res.ok) throw new Error(`Upload failed: ${res.status}`)
+  return res.json() as Promise<{ job_id: string; audit_id: string }>
+}
+
+export async function fetchJobAuth(jobId: string): Promise<JobStatus> {
+  const res = await fetch(`/api/jobs/${encodeURIComponent(jobId)}`, { headers: await authHeaders() })
+  if (!res.ok) throw new Error(`Job fetch failed: ${res.status}`)
+  const data: unknown = await res.json()
+  if (!isJobStatus(data)) throw new Error('Invalid job status')
+  return data
+}
+
+export async function fetchAuditAuth(auditId: string): Promise<AuditSummary> {
+  const res = await fetch(`/api/audits/${encodeURIComponent(auditId)}`, { headers: await authHeaders() })
+  if (!res.ok) throw new Error(`Audit fetch failed: ${res.status}`)
+  const data: unknown = await res.json()
+  if (!isAuditSummary(data)) throw new Error('Invalid audit summary')
+  return data
+}
+
+export async function listAudits(): Promise<AuditSummary[]> {
+  const res = await fetch('/api/audits', { headers: await authHeaders() })
+  if (!res.ok) throw new Error(`Audit list failed: ${res.status}`)
+  const data: unknown = await res.json()
+  if (!Array.isArray(data)) throw new Error('Invalid audit list')
+  return data as AuditSummary[]
+}

@@ -15,3 +15,12 @@ __pycache__/
 *.tsbuildinfo
 frontend/vite.config.js
 frontend/vite.config.d.ts
+infra/pocketbase/pocketbase
+infra/pocketbase/pb_data/
+backend/.env
+infra/pocketbase/pb_migrations/1777392619_created_audits.js
+infra/pocketbase/pb_migrations/1777392685_created_sources.js
+infra/pocketbase/pb_migrations/1777392695_updated_audits.js
+infra/pocketbase/pb_migrations/1777392750_created_evidence_snippets.js
+infra/pocketbase/pb_migrations/1777392846_created_findings.js
+infra/pocketbase/pb_migrations/1777392993_created_jobs.js
