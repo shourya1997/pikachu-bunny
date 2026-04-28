@@ -18,6 +18,7 @@ frontend/vite.config.d.ts
 infra/pocketbase/pocketbase
 infra/pocketbase/pb_data/
 backend/.env
+frontend/.env.local
 infra/pocketbase/pb_migrations/1777392619_created_audits.js
 infra/pocketbase/pb_migrations/1777392685_created_sources.js
 infra/pocketbase/pb_migrations/1777392695_updated_audits.js
